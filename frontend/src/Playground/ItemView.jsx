@@ -6,10 +6,15 @@ import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   item: {
-    padding: 18,
-    // flexBasis: 100,
+    padding: 12,
     alignItems: 'center',
-    // justifyContent: 'flex-start',
+    // borderWidth: 1,
+    flexBasis: 90,
+  },
+  textStyle: {
+    marginTop: 6,
+    fontSize: 12,
+    // fontWeight: 'bold',
   },
 });
 
@@ -17,7 +22,7 @@ function ItemView({ title, icon }) {
   return (
     <View style={styles.item}>
       {icon}
-      <Text>{title}</Text>
+      <Text numberOfLines={1} style={styles.textStyle}>{title}</Text>
     </View>
   );
 }

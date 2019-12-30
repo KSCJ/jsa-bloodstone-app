@@ -8,12 +8,13 @@ import { CardView } from '../common/components';
 const styles = StyleSheet.create({
   cardStyle: {
     marginTop: 10,
+    marginBottom: 0,
     padding: 0,
     borderRadius: 8,
   },
   cardContent: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
   headerStyle: {
     paddingVertical: 12,
