@@ -1,10 +1,8 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import { createSwitchNavigator } from 'react-navigation';
-import createTabNavigator from './createTabNavigator';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import { Ionicons } from '@expo/vector-icons';
+import createTabNavigator from './createTabNavigator';
 import Settings from '../Settings';
 import Colors from '../common/colors';
 import Game from '../Game';
