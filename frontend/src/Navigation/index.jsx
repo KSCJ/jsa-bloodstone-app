@@ -1,10 +1,12 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import { createSwitchNavigator } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import createTabNavigator from './createTabNavigator';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import { Ionicons } from '@expo/vector-icons';
 import Settings from '../Settings';
-import colors from '../common/colors';
+import Colors from '../common/colors';
 import Game from '../Game';
 import Login from '../Login';
 import ForgottenPassword from '../Login/ForgottenPassword';
@@ -21,50 +23,54 @@ const hideHeaderOptions = {
 };
 
 const bottomNavigationOptions = {
-  initialRouteName: 'MyKingdom',
+  animationEnabled: true,
+  initialRouteName: 'Playground',
   order: ['MyKingdom', 'Playground', 'Settings'],
+  barStyle: {
+    backgroundColor: Colors.tabBar,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: Colors.tabIconDefault,
+  },
+  resetOnBlur: false,
+  shifting: true,
+  activeTintColor: '#566ed3',
+  inactiveTintColor: '#999999',
   tabBarOptions: {
-    activeBackgroundColor: 'rgba(0,0,0,.15)',
-    tabStyle: {
-      padding: 0,
-    },
-    labelStyle: {
-      fontWeight: 'bold',
-      color: '#333',
-    },
     style: {
-      backgroundColor: colors.whiteColor,
+      backgroundColor: Colors.tabBar,
     },
+    activeTintColor: '#566ed3',
+    inactiveTintColor: '#999999',
   },
 };
 
-const renderIcon = (name) => (
+const renderIcon = (name, tintColor) => (
   <Ionicons
-    style={{ color: '#333' }}
+    style={{ color: tintColor }}
     name={name}
     size={25}
   />
 );
 
-const TabNavigator = createBottomTabNavigator({
+const TabNavigator = createTabNavigator({
   MyKingdom: {
     screen: Game,
     navigationOptions: {
       title: 'Kingdom',
       tabBarLabel: 'My Kingdom',
-      tabBarIcon: () => renderIcon('ios-home'),
+      tabBarIcon: ({ tintColor }) => renderIcon('md-home', tintColor),
     },
   },
   Settings: {
     screen: Settings,
     navigationOptions: {
-      tabBarIcon: () => renderIcon('md-settings'),
+      tabBarIcon: ({ tintColor }) => renderIcon('md-settings', tintColor),
     },
   },
   Playground: {
     screen: Playground,
     navigationOptions: {
-      tabBarIcon: () => renderIcon('md-planet'),
+      tabBarIcon: ({ tintColor }) => renderIcon('md-planet', tintColor),
     },
   },
 }, bottomNavigationOptions);
