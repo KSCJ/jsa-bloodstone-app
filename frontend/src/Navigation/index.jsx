@@ -11,6 +11,7 @@ import ForgottenPassword from '../Login/ForgottenPassword';
 import Registration from '../Registration';
 import RegistrationMap from '../Map';
 import AuthLoadingScreen from '../AuthLoadingScreen';
+import Playground from '../Playground';
 
 const hideHeaderOptions = {
   headerMode: 'none',
@@ -21,25 +22,25 @@ const hideHeaderOptions = {
 
 const bottomNavigationOptions = {
   initialRouteName: 'MyKingdom',
-  order: ['MyKingdom', 'Settings'],
+  order: ['MyKingdom', 'Playground', 'Settings'],
   tabBarOptions: {
-    activeBackgroundColor: '#00695c',
+    activeBackgroundColor: 'rgba(0,0,0,.15)',
     tabStyle: {
       padding: 0,
     },
     labelStyle: {
       fontWeight: 'bold',
-      color: colors.whiteColor,
+      color: '#333',
     },
     style: {
-      backgroundColor: colors.tealColor,
+      backgroundColor: colors.whiteColor,
     },
   },
 };
 
 const renderIcon = (name) => (
   <Ionicons
-    style={{ color: colors.whiteColor }}
+    style={{ color: '#333' }}
     name={name}
     size={25}
   />
@@ -58,6 +59,12 @@ const TabNavigator = createBottomTabNavigator({
     screen: Settings,
     navigationOptions: {
       tabBarIcon: () => renderIcon('md-settings'),
+    },
+  },
+  Playground: {
+    screen: Playground,
+    navigationOptions: {
+      tabBarIcon: () => renderIcon('md-planet'),
     },
   },
 }, bottomNavigationOptions);
