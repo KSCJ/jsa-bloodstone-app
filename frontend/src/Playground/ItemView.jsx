@@ -6,9 +6,10 @@ import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   item: {
-    padding: 12,
+    marginBottom: 12,
+    paddingHorizontal: 12,
+    flexBasis: '25%',
     alignItems: 'center',
-    flexBasis: 90,
   },
   textStyle: {
     marginTop: 6,
