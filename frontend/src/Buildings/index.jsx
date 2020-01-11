@@ -5,7 +5,7 @@ import {
   View, ScrollView, StyleSheet, ActivityIndicator,
 } from 'react-native';
 
-import { fetchBuildings, addBuildingSuccess } from './actionCreator';
+import { addBuildingSuccess, fetchBuildings } from './actionCreator';
 
 import addFarmIcon from '../../assets/buildings/addFarm.png';
 import addMineIcon from '../../assets/buildings/addMine.png';

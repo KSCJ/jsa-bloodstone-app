@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, YellowBox } from 'react-native';
-
-import ResourceItem from './ResourceItem';
 import { fetchResources } from './actionCreator';
+import ResourceItem from './ResourceItem';
 import ErrorPopup from '../ErrorPopup';
 
 YellowBox.ignoreWarnings(['Warning']);

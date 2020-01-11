@@ -1,16 +1,17 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 import {
   View, ActivityIndicator, ScrollView,
 } from 'react-native';
 import { CardView } from '../common/components';
 import Colors from '../common/colors';
 
-import { fetchTroops } from './actionCreator';
 import TroopInformation from './TroopInformation';
 import TroopLevel from './TroopLevel';
 import ErrorPopup from '../ErrorPopup';
+import { fetchTroops } from './actionCreator';
 
 function Troops() {
   const dispatch = useDispatch();

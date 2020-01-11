@@ -1,65 +1,62 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  View, Image, StyleSheet, ImageBackground,
+  View, Text, Image,
 } from 'react-native';
 import { useNavigation } from 'react-navigation-hooks';
 
-import logo from '../../assets/logoSpace.png';
-import loadingIcon from '../../assets/loading.gif';
-import background from '../../assets/authBackground.gif';
+import { fetchBuildings } from '../Buildings/actionCreator';
+import { fetchTroops } from '../Troops/actionCreator';
+import { fetchResources } from '../Resources/actionCreator';
+import JetLoading from '../../assets/jet.gif';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'black',
-  },
-  background: {
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  imgContainer: {
-    borderRadius: 10,
-    overflow: 'hidden',
-  },
-  logo: {
-    height: 200,
-    width: 300,
-    position: 'absolute',
-    top: 5,
-  },
-  loading: {
-    height: 100,
-    width: 300,
-    position: 'absolute',
-    bottom: 50,
-  },
-});
+function Sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+function PromiseAllWithLoading(promises, callback) {
+  let d = 0;
+  callback(d);
+  promises.forEach((promise) => {
+    promise.then(() => {
+      d += 1;
+      callback((d * 100) / promises.length);
+    });
+  });
+  return Promise.all(promises);
+}
 
 function AuthLoadingScreen() {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const { token } = useSelector((state) => state.auth);
-  setTimeout(() => {
-    if (token) {
-      return navigation.navigate('Home');
+  const [percent, setPercent] = useState(0);
+
+  useEffect(() => {
+    async function loadStore() {
+      await PromiseAllWithLoading([
+        dispatch(fetchResources()),
+        dispatch(fetchBuildings()),
+        dispatch(fetchTroops()),
+        Sleep(1000),
+        Sleep(2000),
+        Sleep(3000),
+      ], setPercent);
+      await Sleep(200);
+      if (token) {
+        return navigation.navigate('Home');
+      }
+      return navigation.navigate('Auth');
     }
-    return navigation.navigate('Auth');
-  }, 3000);
+    loadStore();
+  }, []);
 
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        style={styles.background}
-        resizeMode="cover"
-        source={background}
-      >
-        <Image style={styles.logo} source={logo} />
-        <Image style={styles.loading} source={loadingIcon} />
-      </ImageBackground>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Image source={JetLoading} />
+      <Text>{`${Number.parseInt(percent, 10)}%`}</Text>
     </View>
   );
 }
