@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   TextInput, StyleSheet,
 } from 'react-native';
@@ -9,7 +9,7 @@ import colors from '../common/colors';
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 10,
+    paddingVertical: 5,
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 24,
@@ -21,15 +21,16 @@ const styles = StyleSheet.create({
   },
 });
 
-function SearchBar({ onSubmit, placeholder }) {
-  const [value, setValue] = useState('');
+function Searchbar({
+  onSubmit, placeholder, value, onValueChange,
+}) {
   return (
     <CardView style={styles.container}>
       <Ionicons name="md-search" size={20} color={colors.tealColor} />
       <TextInput
         style={styles.inputStyle}
         value={value}
-        onChangeText={(text) => setValue(text)}
+        onChangeText={onValueChange}
         onSubmitEditing={() => onSubmit(value)}
         placeholder={placeholder}
       />
@@ -37,14 +38,18 @@ function SearchBar({ onSubmit, placeholder }) {
   );
 }
 
-SearchBar.propTypes = {
+Searchbar.propTypes = {
+  value: PropTypes.string,
+  onValueChange: PropTypes.func,
   onSubmit: PropTypes.func,
   placeholder: PropTypes.string,
 };
 
-SearchBar.defaultProps = {
+Searchbar.defaultProps = {
+  value: '',
+  onValueChange: null,
   onSubmit: null,
   placeholder: 'Search',
 };
 
-export default SearchBar;
+export default Searchbar;
