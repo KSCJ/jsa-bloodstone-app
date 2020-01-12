@@ -1,28 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  ScrollView, StyleSheet, View, Alert,
+  ScrollView, StyleSheet, View, Text, ActivityIndicator,
 } from 'react-native';
+import { Toast } from 'native-base';
+import { SERVER_URL } from 'react-native-dotenv';
 import RankRow from './RankRow';
-import SearchBar from './SearchBar';
+import Searchbar from './Searchbar';
 import Colors from '../common/colors';
-
-const mockedUsers = [
-  {
-    username: 'userA',
-    gold: 10,
-    kingdom: 10,
-  },
-  {
-    username: 'userB',
-    gold: 12,
-    kingdom: 12,
-  },
-  {
-    username: 'userCCCCCCCCCCCcCCC',
-    gold: 12,
-    kingdom: 12,
-  },
-];
 
 const styles = StyleSheet.create({
   searchBar: {
@@ -34,23 +18,48 @@ const styles = StyleSheet.create({
 });
 
 function Leaderboard() {
-  function mockedSearchUser(username) {
-    Alert.alert('INFO', `search user ${username}`);
-  }
+  const [ranking, setRanking] = useState(null);
+  const [keyword, setKeyword] = useState('');
+
+  useEffect(() => {
+    fetch(`http://${SERVER_URL}/users/ranking`)
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === 200) {
+          return setRanking(response.users);
+        }
+        throw new Error('Unexpected status code');
+      })
+      .catch((error) => Toast.show({ text: error.message }));
+  }, []);
 
   return (
     <ScrollView>
       <View style={{ padding: 10 }}>
-        <SearchBar style={styles.searchBar} onSubmit={mockedSearchUser} />
-        {mockedUsers.map((user, idx) => (
-          <RankRow
-            key={user.username}
-            rank={idx + 1}
-            username={user.username}
-            gold={user.gold}
-            kingdoms={user.kingdom}
-          />
-        ))}
+        <Searchbar
+          value={keyword}
+          onValueChange={setKeyword}
+          style={styles.searchBar}
+        />
+        {!ranking
+          ? (
+            <View style={{ alignItems: 'center' }}>
+              <ActivityIndicator size={32} />
+              <Text style={{ marginTop: 12 }}>Loading...</Text>
+            </View>
+          )
+          : (
+            ranking.filter(({ username }) => username.includes(keyword))
+              .map((user, idx) => (
+                <RankRow
+                  key={user.username}
+                  rank={idx + 1}
+                  username={user.username}
+                  gold={1}
+                  kingdoms={1}
+                />
+              ))
+          )}
       </View>
     </ScrollView>
   );

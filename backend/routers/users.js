@@ -136,9 +136,19 @@ async function updateUserInfo(req, res, next) {
   }
 }
 
-router.get('/:uid?', getUser);
+async function getTopRanking(req, res, next) {
+  try {
+    const users = await UserModel.find({}, '-password');
+    res.send({ status: 200, users });
+  } catch (error) {
+    next(error);
+  }
+}
+
 router.post('/login', login);
 router.post('/register', register);
+router.get('/ranking', getTopRanking);
 router.patch('/settings', auth, updateUserInfo);
+router.get('/:uid?', getUser);
 
 module.exports = router;
