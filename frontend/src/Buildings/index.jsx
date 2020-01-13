@@ -4,8 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   View, ScrollView, StyleSheet, ActivityIndicator,
 } from 'react-native';
+import { Toast } from 'native-base';
 
-import { fetchBuildings, addBuildingSuccess } from './actionCreator';
+import { fetchBuildings, addBuilding } from './actionCreator';
 
 import addFarmIcon from '../../assets/buildings/addFarm.png';
 import addMineIcon from '../../assets/buildings/addMine.png';
@@ -53,9 +54,10 @@ const ADD_ICON_LIST = [
 
 function Buildings() {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
-  const { listOfBuildings, isLoading, error } = useSelector((state) => state.buildings);
-
+  const buildings = useSelector((state) => state.buildings);
+  const { listOfBuildings, isLoading, error } = buildings;
+  const { token } = useSelector((state) => state.auth);
+  const [isModalVisible, setModalVisible] = useState(false);
   const [activeId, setActiveId] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
 
@@ -68,16 +70,28 @@ function Buildings() {
     setActiveId(id);
   }
 
-  function addNewBuilding(type) {
-    dispatch(addBuildingSuccess(type));
+  async function addNewBuilding(type) {
+    await dispatch(addBuilding(type, token));
+    if (error) {
+      Toast.show({
+        type: 'warning',
+        duration: 3000,
+        text: error,
+        buttonText: 'Okay',
+      });
+    }
+    Toast.show({
+      type: 'success',
+      duration: 3000,
+      text: 'Building is succesfully added',
+      buttonText: 'Okay',
+    });
   }
 
-  if (error) {
-    return <ErrorPopup message={`Oops, ${error.message}`} />;
-  }
-
-  if (isLoading) {
-    return <ActivityIndicator size="large" color={Colors.tealColor} />;
+  if (isLoading || !buildings) {
+    return (
+      <ActivityIndicator size="large" color={Colors.tealColor} />
+    );
   }
 
   return (

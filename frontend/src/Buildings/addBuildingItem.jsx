@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  View, Image, TouchableHighlight,
-  StyleSheet, Text,
+  View, Image, StyleSheet,
+  TouchableHighlight, Text,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import FontStyle from '../common/fonts';

@@ -46,7 +46,7 @@ async function createBuilding(req, res, next) {
       type: buildingType,
       owner,
     });
-    res.send({ newBuilding });
+    res.send({ status: 200, newBuilding });
   } catch (error) {
     next(error);
   }
