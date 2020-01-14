@@ -19,7 +19,7 @@ export default function buildings(state = initialState, action) {
     case ADD_BUILDING_REQUEST:
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
       };
     case FETCH_BUILDINGS_SUCCESS:
       return {
@@ -29,7 +29,7 @@ export default function buildings(state = initialState, action) {
         error: undefined,
       };
     case ADD_BUILDING_SUCCESS:
-      return { 
+      return {
         ...state,
         listOfBuildings: [...state.listOfBuildings, action.payload.newBuilding],
         isLoading: false,
@@ -40,7 +40,7 @@ export default function buildings(state = initialState, action) {
       return {
         ...state,
         isLoading: false,
-        error: action.payload
+        error: action.payload,
       };
     default:
       return state;

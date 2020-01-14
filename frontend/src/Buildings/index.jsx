@@ -79,8 +79,7 @@ function Buildings() {
         text: error,
         buttonText: 'Okay',
       });
-    }
-    else {
+    } else {
       Toast.show({
         type: 'success',
         duration: 3000,
