@@ -69,8 +69,8 @@ function Buildings() {
   }
 
   async function addNewBuilding(type) {
-    const { type } = await dispatch(addBuilding(type, token));
-    if (type === ADD_BUILDING_FAILURE) {
+    const { type: actionType } = await dispatch(addBuilding(type, token));
+    if (actionType === ADD_BUILDING_FAILURE) {
       Toast.show({
         type: 'warning',
         duration: 3000,
