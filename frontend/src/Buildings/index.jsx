@@ -80,12 +80,14 @@ function Buildings() {
         buttonText: 'Okay',
       });
     }
-    Toast.show({
-      type: 'success',
-      duration: 3000,
-      text: 'Building is succesfully added',
-      buttonText: 'Okay',
-    });
+    else {
+      Toast.show({
+        type: 'success',
+        duration: 3000,
+        text: 'Building is succesfully added',
+        buttonText: 'Okay',
+      });
+    }
   }
 
   if (isLoading || !buildings) {
