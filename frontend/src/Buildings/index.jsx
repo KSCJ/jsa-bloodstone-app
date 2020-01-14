@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { Toast } from 'native-base';
 
-import { fetchBuildings, addBuilding } from './actionCreator';
+import { fetchBuildings, addBuilding, ADD_BUILDING_FAILURE } from './actionCreator';
 
 import addFarmIcon from '../../assets/buildings/addFarm.png';
 import addMineIcon from '../../assets/buildings/addMine.png';
@@ -69,8 +69,8 @@ function Buildings() {
   }
 
   async function addNewBuilding(type) {
-    await dispatch(addBuilding(type, token));
-    if (error) {
+    const { type } = await dispatch(addBuilding(type, token));
+    if (type === ADD_BUILDING_FAILURE) {
       Toast.show({
         type: 'warning',
         duration: 3000,
