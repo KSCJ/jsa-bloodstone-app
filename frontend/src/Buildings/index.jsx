@@ -17,8 +17,7 @@ import { CardView } from '../common/components';
 import BuildingItem from './buildingItem';
 import AddBuildingItem from './addBuildingItem';
 import OneBuilding from '../OneBuilding';
-
-import ErrorPopup from '../ErrorPopup';
+import getIconImage from './assets';
 
 const styles = StyleSheet.create({
   container: {
@@ -59,7 +58,6 @@ function Buildings() {
   const { token } = useSelector((state) => state.auth);
   const [isModalVisible, setModalVisible] = useState(false);
   const [activeId, setActiveId] = useState('');
-  const [isModalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     dispatch(fetchBuildings(token));
