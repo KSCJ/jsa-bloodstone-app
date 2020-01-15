@@ -8,6 +8,7 @@ import { Toast } from 'native-base';
 import PlanetItem from './PlanetItem';
 import PlayerItem from './PlayerItem';
 import { CardView } from '../common/components';
+import BattleReport from './BattleReport';
 
 const styles = StyleSheet.create({
   container: {
@@ -111,12 +112,7 @@ function Battle() {
   }
 
   if (battleStatus === BATTLE_REPORT) {
-    return (
-      <CardView>
-        <Text>Here is mocked Battle report</Text>
-        <Button onPress={() => setBattleStatus(BATTLE_PREPARE)} title="BACK" />
-      </CardView>
-    );
+    return <BattleReport onBattleStatusChange={setBattleStatus} />;
   }
 
   return (
