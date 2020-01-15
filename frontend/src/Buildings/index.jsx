@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  View, ScrollView, StyleSheet, ActivityIndicator,
+  View, ScrollView, StyleSheet, ActivityIndicator, Text,
 } from 'react-native';
 
 import { fetchBuildings, addBuildingSuccess } from './actionCreator';
@@ -10,7 +10,6 @@ import { fetchBuildings, addBuildingSuccess } from './actionCreator';
 import addFarmIcon from '../../assets/buildings/addFarm.png';
 import addMineIcon from '../../assets/buildings/addMine.png';
 
-import Colors from '../common/colors';
 import { CardView } from '../common/components';
 
 import BuildingItem from './buildingItem';
@@ -77,7 +76,12 @@ function Buildings() {
   }
 
   if (isLoading) {
-    return <ActivityIndicator size="large" color={Colors.tealColor} />;
+    return (
+      <CardView style={{ alignItems: 'center' }}>
+        <ActivityIndicator size={32} />
+        <Text style={{ marginTop: 12 }}>Loading...</Text>
+      </CardView>
+    );
   }
 
   return (
