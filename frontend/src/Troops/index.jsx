@@ -2,10 +2,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  View, ActivityIndicator, ScrollView,
+  View, ActivityIndicator, Text, ScrollView,
 } from 'react-native';
 import { CardView } from '../common/components';
-import Colors from '../common/colors';
 
 import { fetchTroops } from './actionCreator';
 import TroopInformation from './TroopInformation';
@@ -27,7 +26,12 @@ function Troops() {
   }
 
   if (isLoading || Object.keys(infoOfTroops).length === 0) {
-    return <ActivityIndicator size="large" color={Colors.tealColor} />;
+    return (
+      <CardView style={{ alignItems: 'center' }}>
+        <ActivityIndicator size={32} />
+        <Text style={{ marginTop: 12 }}>Loading...</Text>
+      </CardView>
+    );
   }
 
   const {
