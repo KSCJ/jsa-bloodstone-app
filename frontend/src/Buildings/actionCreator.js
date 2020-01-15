@@ -32,7 +32,7 @@ export function fetchBuildings(token) {
 export function addBuilding(type, token) {
   return (dispatch) => {
     dispatch({ type: ADD_BUILDING_REQUEST });
-    fetch(URL, {
+    return fetch(URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

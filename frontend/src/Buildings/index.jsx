@@ -17,7 +17,6 @@ import { CardView } from '../common/components';
 import BuildingItem from './buildingItem';
 import AddBuildingItem from './addBuildingItem';
 import OneBuilding from '../OneBuilding';
-import getIconImage from './assets';
 
 const styles = StyleSheet.create({
   container: {
@@ -54,7 +53,7 @@ const ADD_ICON_LIST = [
 function Buildings() {
   const dispatch = useDispatch();
   const buildings = useSelector((state) => state.buildings);
-  const { listOfBuildings, isLoading, error } = buildings;
+  const { listOfBuildings, isLoading } = buildings;
   const { token } = useSelector((state) => state.auth);
   const [isModalVisible, setModalVisible] = useState(false);
   const [activeId, setActiveId] = useState('');
@@ -69,12 +68,12 @@ function Buildings() {
   }
 
   async function addNewBuilding(type) {
-    const { type: actionType } = await dispatch(addBuilding(type, token));
+    const { type: actionType, payload } = await dispatch(addBuilding(type, token));
     if (actionType === ADD_BUILDING_FAILURE) {
       Toast.show({
         type: 'warning',
         duration: 3000,
-        text: error,
+        text: payload,
         buttonText: 'Okay',
       });
     } else {
