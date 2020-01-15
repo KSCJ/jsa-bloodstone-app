@@ -42,8 +42,6 @@ function PlanetItem({ type, active, onSelectChange }) {
         { iterations: -1 },
       ).start();
       onSelectChange(type);
-    } else {
-      onSelectChange(null);
     }
   }
 

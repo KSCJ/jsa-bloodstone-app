@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  View, StyleSheet, ScrollView, Text, Alert, Button,
+  View, StyleSheet, ScrollView, Text, Alert, ActivityIndicator,
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { SERVER_URL } from 'react-native-dotenv';
@@ -8,6 +8,7 @@ import { Toast } from 'native-base';
 import PlanetItem from './PlanetItem';
 import PlayerItem from './PlayerItem';
 import { CardView } from '../common/components';
+import BattleReport from './BattleReport';
 
 const styles = StyleSheet.create({
   container: {
@@ -36,8 +37,9 @@ const BATTLE_REPORT = 'battleReport';
 
 function Battle() {
   const [battleStatus, setBattleStatus] = useState(BATTLE_PREPARE);
-  const [active, setActive] = useState(null);
-  const [players, setPlayers] = useState([]);
+  const [battleWith, setBattleWith] = useState('');
+  const [active, setActive] = useState('yellow');
+  const [players, setPlayers] = useState(null);
   const { token } = useSelector((state) => state.auth);
 
   function handleBattleStart(id, name) {
@@ -48,7 +50,10 @@ function Battle() {
         { text: 'Cancel', style: 'cancel' },
         {
           text: 'OK',
-          onPress: () => setBattleStatus(BATTLE_REPORT),
+          onPress: () => {
+            setBattleStatus(BATTLE_REPORT);
+            setBattleWith(id);
+          },
         },
       ],
       { cancelable: false },
@@ -80,10 +85,11 @@ function Battle() {
   }, [active]);
 
   function renderPlayers() {
-    if (!players.length) {
+    if (!players) {
       return (
-        <CardView>
-          <Text>No players on this planet.</Text>
+        <CardView style={{ alignItems: 'center' }}>
+          <ActivityIndicator size={32} />
+          <Text style={{ marginTop: 12 }}>Loading...</Text>
         </CardView>
       );
     }
@@ -111,12 +117,7 @@ function Battle() {
   }
 
   if (battleStatus === BATTLE_REPORT) {
-    return (
-      <CardView>
-        <Text>Here is mocked Battle report</Text>
-        <Button onPress={() => setBattleStatus(BATTLE_PREPARE)} title="BACK" />
-      </CardView>
-    );
+    return <BattleReport battleWith={battleWith} onBattleStatusChange={setBattleStatus} />;
   }
 
   return (
@@ -139,15 +140,7 @@ function Battle() {
               ),
             )}
           </View>
-          {
-            active
-              ? renderPlayers()
-              : (
-                <CardView>
-                  <Text>Please select a planet.</Text>
-                </CardView>
-              )
-          }
+          {renderPlayers()}
         </ScrollView>
       </View>
     </View>

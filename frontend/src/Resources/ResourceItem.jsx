@@ -76,7 +76,7 @@ function ResourceItem({ type, amount, rate }) {
           <AnimateNumber
             style={styles.text}
             value={amount}
-            timing="easeOut"
+            timing="linear"
             formatter={handleAmount}
           />
         </View>

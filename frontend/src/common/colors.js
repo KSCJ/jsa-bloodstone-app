@@ -18,4 +18,6 @@ export default {
   blueColor: '#1976d2',
   pinkColor: '#e91e63',
   purpleColor: '#673ab7',
+  darkBlueColor: '#11508e',
+  darkRedColor: '#d2190b',
 };
