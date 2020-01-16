@@ -32,17 +32,30 @@ exports[`<AddBuildingItem /> Should render AddBuildingItem and match the snapsho
         }
       }
     />
-    <Text
-      style={
-        Object {
-          "fontSize": 12,
-          "fontWeight": "bold",
-          "marginLeft": 8,
+    <View>
+      <Text
+        style={
+          Object {
+            "fontSize": 12,
+            "fontWeight": "bold",
+            "marginLeft": 8,
+          }
         }
-      }
-    >
-      Add test type
-    </Text>
+      >
+        Add test type
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#FD730B",
+            "fontSize": 10,
+            "marginLeft": 8,
+          }
+        }
+      >
+        -undefined golds
+      </Text>
+    </View>
   </View>
 </View>
 `;

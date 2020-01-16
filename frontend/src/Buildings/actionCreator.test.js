@@ -20,7 +20,7 @@ describe('buildings actions', () => {
     });
     const expectedActions = [
       { type: actionCreator.FETCH_BUILDINGS_REQUEST },
-      { type: actionCreator.FETCH_BUILDINGS_SUCCESS, payload: ['test'] },
+      { type: actionCreator.FETCH_BUILDINGS_SUCCESS, payload: {buildings: ['test']} },
     ];
     const store = mockStore();
     return store.dispatch(actionCreator.fetchBuildings()).then(() => {
@@ -44,29 +44,31 @@ describe('buildings actions', () => {
 
   it('creates ADD_BUILDINGS_SUCCESS when adding buildings has been done', () => {
     fetchMock.getOnce(URL, {
-      body: { buildings: ['test'] },
+      method: 'POST',
+      body: { newBuildings: ['test'] },
       headers: { 'content-type': 'application/json' },
     });
     const expectedActions = [
       { type: actionCreator.ADD_BUILDING_REQUEST },
-      { type: actionCreator.ADD_BUILDING_SUCCESS, payload: ['test'] },
+      { type: actionCreator.ADD_BUILDING_SUCCESS, payload: { newBuildings: ['test'] } },
     ];
     const store = mockStore();
-    return store.dispatch(actionCreator.addBuildings()).then(() => {
+    return store.dispatch(actionCreator.addBuilding()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
   it('creates ADD_BUILDINGS_FAILURE when adding buildings failed', () => {
     fetchMock.getOnce(URL, {
+      method: 'POST',
       status: 404,
     });
     const expectedActions = [
       { type: actionCreator.ADD_BUILDING_REQUEST },
-      { type: actionCreator.ADD_BUILDING_FAILURE, payload: new Error('An error has occurred, please try later!') },
+      { type: actionCreator.ADD_BUILDING_FAILURE, payload: 404 },
     ];
     const store = mockStore();
-    return store.dispatch(actionCreator.addBuildings()).then(() => {
+    return store.dispatch(actionCreator.addBuilding()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

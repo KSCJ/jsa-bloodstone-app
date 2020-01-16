@@ -6,6 +6,7 @@ describe('buildings reducer', () => {
     expect(reducer(undefined, {})).toEqual(
       {
         listOfBuildings: [],
+        buildingPrice: [],
         isLoading: false,
         error: undefined,
       },
@@ -17,6 +18,7 @@ describe('buildings reducer', () => {
       reducer(
         {
           listOfBuildings: [],
+          buildingPrice: [],
           isLoading: false,
           error: undefined,
         },
@@ -27,6 +29,7 @@ describe('buildings reducer', () => {
     ).toEqual(
       {
         listOfBuildings: [],
+        buildingPrice: [],
         isLoading: true,
         error: undefined,
       },
@@ -38,17 +41,19 @@ describe('buildings reducer', () => {
       reducer(
         {
           listOfBuildings: [],
+          buildingPrice:[],
           isLoading: true,
           error: undefined,
         },
         {
           type: actionCreator.FETCH_BUILDINGS_SUCCESS,
-          payload: ['test'],
+          payload: {buildings: ['test']},
         },
       ),
     ).toEqual(
       {
         listOfBuildings: ['test'],
+        buildingPrice: undefined,
         isLoading: false,
         error: undefined,
       },
@@ -60,6 +65,7 @@ describe('buildings reducer', () => {
       reducer(
         {
           listOfBuildings: [],
+          buildingPrice: [],
           isLoading: true,
           error: undefined,
         },
@@ -71,6 +77,7 @@ describe('buildings reducer', () => {
     ).toEqual(
       {
         listOfBuildings: [],
+        buildingPrice: [],
         isLoading: false,
         error: new Error('test'),
       },

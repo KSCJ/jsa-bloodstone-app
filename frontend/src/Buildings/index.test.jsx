@@ -111,6 +111,7 @@ describe('<Buildings />', () => {
     const mockedState = {
       buildings: {
         listOfBuildings: buildings,
+        buildingPrice: priceOfBuilding,
         isLoading: false,
         error: undefined,
       },
@@ -130,6 +131,7 @@ describe('<Buildings />', () => {
     const mockedState = {
       buildings: {
         listOfBuildings: buildings,
+        buildingPrice: priceOfBuilding,
         isLoading: true,
         error: undefined,
       },
@@ -149,6 +151,7 @@ describe('<Buildings />', () => {
     const mockedState = {
       buildings: {
         listOfBuildings: buildings,
+        buildingPrice: undefined,
         isLoading: true,
         error: new Error('test error'),
       },

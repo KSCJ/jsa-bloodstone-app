@@ -83,9 +83,11 @@ exports[`<Buildings /> Should render buildings and match the snapshot 1`] = `
 `;
 
 exports[`<Buildings /> Should render error and match the snapshot 1`] = `
-<ErrorPopup
-  message="Oops, test error"
-  title="System Error"
+<ActivityIndicator
+  animating={true}
+  color="#10978b"
+  hidesWhenStopped={true}
+  size="large"
 />
 `;
 
