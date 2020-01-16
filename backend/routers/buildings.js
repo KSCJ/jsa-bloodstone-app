@@ -21,9 +21,9 @@ async function getBuildings(req, res, next) {
   try {
     const buildings = await BuildingModel.find({ owner });
     const priceOfBuilding = [
-      buildingRules['Farm'].constructionCost,
-      buildingRules['Mine'].constructionCost,
-    ]
+      buildingRules.Farm.constructionCost,
+      buildingRules.Mine.constructionCost,
+    ];
     res.send({ buildings, priceOfBuilding });
   } catch (error) {
     next(error);

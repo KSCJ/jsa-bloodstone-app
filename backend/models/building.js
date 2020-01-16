@@ -12,7 +12,7 @@ const buildingSchema = new Schema({
   owner: { type: Schema.Types.ObjectId, ref: 'User' },
 }, schemaOptions);
 
-buildingSchema.statics.createBasicBuildings = async function (owner) {
+buildingSchema.statics.createBasicBuildings = function (owner) {
   return this.create(
     { type: 'Townhall', owner },
     { type: 'Academy', owner },
