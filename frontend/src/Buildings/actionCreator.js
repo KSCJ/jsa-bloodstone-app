@@ -24,9 +24,7 @@ export function fetchBuildings(token) {
         }
         throw new Error('An error has occurred, please try later!');
       })
-      .then((response) => {
-        dispatch({ type: FETCH_BUILDINGS_SUCCESS, payload: response })
-      })
+      .then((response) => dispatch({ type: FETCH_BUILDINGS_SUCCESS, payload: response }))
       .catch((error) => dispatch({ type: FETCH_BUILDINGS_FAILURE, payload: error }));
   };
 }
