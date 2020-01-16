@@ -20,7 +20,11 @@ async function getBuildings(req, res, next) {
   const { _id: owner } = req.user;
   try {
     const buildings = await BuildingModel.find({ owner });
-    res.send({ buildings });
+    const priceOfBuilding = [
+      buildingRules['Farm'].constructionCost,
+      buildingRules['Mine'].constructionCost,
+    ]
+    res.send({ buildings, priceOfBuilding });
   } catch (error) {
     next(error);
   }

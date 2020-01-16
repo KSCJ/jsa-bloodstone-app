@@ -9,6 +9,7 @@ import {
 
 const initialState = {
   listOfBuildings: [],
+  buildingPrice: [],
   isLoading: false,
   error: undefined,
 };
@@ -24,7 +25,8 @@ export default function buildings(state = initialState, action) {
     case FETCH_BUILDINGS_SUCCESS:
       return {
         ...state,
-        listOfBuildings: action.payload,
+        listOfBuildings: action.payload.buildings,
+        buildingPrice: action.payload.priceOfBuilding,
         isLoading: false,
         error: undefined,
       };

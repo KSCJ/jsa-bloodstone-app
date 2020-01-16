@@ -29,14 +29,16 @@ const styles = StyleSheet.create({
   },
 });
 
-function AddBuildingItem({ icon, type, onPress }) {
+function AddBuildingItem({
+  icon, type, onPress, price,
+}) {
   return (
     <TouchableHighlight underlayColor="transparent" onPress={onPress}>
       <View style={styles.itemStyle}>
         <Image style={styles.iconStyle} source={icon} />
         <View>
           <Text style={styles.textStyle}>{`Add ${type}`}</Text>
-          <Text style={styles.subText}>-100 golds</Text>
+          <Text style={styles.subText}>{`-${price} golds`}</Text>
         </View>
       </View>
     </TouchableHighlight>
@@ -46,6 +48,7 @@ function AddBuildingItem({ icon, type, onPress }) {
 AddBuildingItem.propTypes = {
   icon: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
   onPress: PropTypes.func,
 };
 

@@ -53,7 +53,7 @@ const ADD_ICON_LIST = [
 function Buildings() {
   const dispatch = useDispatch();
   const buildings = useSelector((state) => state.buildings);
-  const { listOfBuildings, isLoading } = buildings;
+  const { listOfBuildings, buildingPrice, isLoading } = buildings;
   const { token } = useSelector((state) => state.auth);
   const [isModalVisible, setModalVisible] = useState(false);
   const [activeId, setActiveId] = useState('');
@@ -86,7 +86,7 @@ function Buildings() {
     }
   }
 
-  if (isLoading || !buildings) {
+  if (isLoading) {
     return (
       <ActivityIndicator size="large" color={Colors.tealColor} />
     );
@@ -110,12 +110,13 @@ function Buildings() {
           ))}
         </ScrollView>
         <View style={styles.addBuildingContainer}>
-          {ADD_ICON_LIST.map((addBuildingIcon) => (
+          {ADD_ICON_LIST.map((addBuildingIcon, index) => (
             <AddBuildingItem
               key={addBuildingIcon.type}
               icon={addBuildingIcon.url}
               type={addBuildingIcon.type}
               onPress={() => addNewBuilding(addBuildingIcon.type)}
+              price={buildingPrice[index]}
             />
           ))}
         </View>
