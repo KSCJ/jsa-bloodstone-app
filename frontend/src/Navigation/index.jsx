@@ -33,6 +33,7 @@ const bottomNavigationOptions = {
     },
     style: {
       backgroundColor: colors.tealColor,
+      position: 'absolute',
     },
   },
 };

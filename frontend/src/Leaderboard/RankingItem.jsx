@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 });
 
 function RankingItem({
-  ranking, gold, kingdom, themeColor,
+  ranking, gold, kingdom, themeColor, name,
 }) {
   const extraContainerStyle = {
     backgroundColor: themeColor,
@@ -68,7 +68,7 @@ function RankingItem({
       <Text style={styles.rankTextStyle}>{ranking}</Text>
       <Image source={troopAvatar} resizeMode="contain" style={styles.avatarStyle} />
       <View>
-        <Text numberOfLines={1} style={styles.headerTextStyle}>The Incredible</Text>
+        <Text numberOfLines={1} style={styles.headerTextStyle}>{name}</Text>
         <View style={{ flexDirection: 'row', marginTop: 5 }}>
           <View style={{ flexDirection: 'row', marginRight: 10 }}>
             <Image style={styles.iconStyle} source={goldIcon} />
@@ -89,6 +89,7 @@ RankingItem.propTypes = {
   gold: PropTypes.number,
   kingdom: PropTypes.number,
   themeColor: PropTypes.string,
+  name: PropTypes.string,
 };
 
 RankingItem.defaultProps = {
@@ -96,6 +97,7 @@ RankingItem.defaultProps = {
   gold: 0,
   kingdom: 0,
   themeColor: colors.greyColor,
+  name: 'The Incredible',
 };
 
 export default RankingItem;

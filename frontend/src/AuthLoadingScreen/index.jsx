@@ -48,7 +48,7 @@ function AuthLoadingScreen() {
       return navigation.navigate('Home');
     }
     return navigation.navigate('Auth');
-  }, 3000);
+  }, 1200);
 
   return (
     <View style={styles.container}>

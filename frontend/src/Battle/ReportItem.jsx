@@ -22,12 +22,17 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     bottom: 0,
+    left: 0,
     alignItems: 'center',
     backgroundColor: Colors.whiteColor,
+    // borderWidth: 1,
   },
   healthbarContainer: {
+    position: 'relative',
     alignItems: 'center',
-    marginBottom: 10,
+    // justifyContent: 'center',
+    marginBottom: 5,
+    // paddingLeft: -10,
     overflow: 'hidden',
   },
   textStyle: {
@@ -47,7 +52,7 @@ function getAnimatedStyle(width, statusColor) {
     backgroundColor: statusColor,
     width: width.interpolate({
       inputRange: [0, 100],
-      outputRange: ['0%', '100%'],
+      outputRange: ['0%', '108%'],
     }),
   };
 }

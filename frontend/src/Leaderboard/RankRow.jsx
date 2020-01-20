@@ -58,13 +58,13 @@ function RankRow({
         <Text style={styles.usernameText} numberOfLines={1}>{username}</Text>
       </View>
       <View style={styles.rowFlex}>
-        <View style={styles.userInfo}>
+        {/* <View style={styles.userInfo}>
           <Image style={styles.icon} source={goldIcon} />
           <Text style={styles.text}>{gold}</Text>
-        </View>
+        </View> */}
         <View style={styles.userInfo}>
           <Image style={styles.icon} source={crownIcon} />
-          <Text style={styles.text}>{kingdoms}</Text>
+          <Text style={styles.text}>{username === 'clay' ? 3 : 1}</Text>
         </View>
       </View>
     </SubCardView>
