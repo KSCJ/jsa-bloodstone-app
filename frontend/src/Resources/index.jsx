@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { View, YellowBox } from 'react-native';
+import {
+  View, StyleSheet, Image, Text,
+} from 'react-native';
+import PropTypes from 'prop-types';
 
 import ResourceItem from './ResourceItem';
 import { fetchResources } from './actionCreator';
 import ErrorPopup from '../ErrorPopup';
+import Colors from '../common/colors';
 
 const styles = StyleSheet.create({
   text: {

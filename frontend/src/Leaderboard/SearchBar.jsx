@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 24,
+    marginBottom: 10,
   },
   inputStyle: {
     flex: 1,

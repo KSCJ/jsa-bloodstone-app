@@ -18,7 +18,8 @@ function InputField({
   const extraStyle = {
     margin: 0,
     padding: 0,
-    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 10,
     borderColor: 'rgba(0,0,0,.12)',
     elevation: isFocus ? 2 : 0,
   };

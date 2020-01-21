@@ -9,7 +9,7 @@ import { CardView } from '../common/components';
 import troopAvatar from '../../assets/troop/troop.png';
 import crownIcon from '../../assets/crown.png';
 import goldIcon from '../../assets/gold.png';
-import colors from '../common/colors';
+import Colors from '../common/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -41,11 +41,11 @@ const styles = StyleSheet.create({
   },
   triangle: {
     borderWidth: 10,
-    borderTopColor: colors.transparent,
-    borderBottomColor: colors.transparent,
-    borderLeftColor: colors.transparent,
-    borderRightColor: colors.whiteColor,
-    marginLeft: -35,
+    borderTopColor: Colors.transparent,
+    borderBottomColor: Colors.transparent,
+    borderLeftColor: Colors.transparent,
+    borderRightColor: Colors.transparentWhiteColor,
+    marginLeft: -32,
   },
 });
 
@@ -62,11 +62,11 @@ function MyRankingItem({ ranking, gold, kingdom }) {
         <View style={{ flexDirection: 'row', marginTop: 5, justifyContent: 'center' }}>
           <View style={{ flexDirection: 'row', marginRight: 10 }}>
             <Image style={styles.iconStyle} source={goldIcon} />
-            <Text style={{ color: colors.blackColor }}>{` ${gold}`}</Text>
+            <Text style={{ color: Colors.blackColor }}>{` ${gold}`}</Text>
           </View>
           <View style={{ flexDirection: 'row', marginLeft: 10 }}>
             <Image style={styles.iconStyle} source={crownIcon} />
-            <Text style={{ color: colors.blackColor }}>{` ${kingdom}`}</Text>
+            <Text style={{ color: Colors.blackColor }}>{` ${kingdom}`}</Text>
           </View>
         </View>
       </View>

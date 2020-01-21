@@ -13,7 +13,6 @@ const shadowEffect = {
 export default StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
     paddingTop: Constants.statusBarHeight,
   },
   textStyle: {
@@ -24,9 +23,8 @@ export default StyleSheet.create({
   },
   cardStyle: {
     ...shadowEffect,
-    padding: 15,
-    marginBottom: 10,
-    borderRadius: 5,
+    padding: 12,
+    borderRadius: 3,
     backgroundColor: Colors.transparentWhiteColor,
   },
   subCardStyle: {
