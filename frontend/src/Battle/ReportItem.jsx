@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Text, StyleSheet, Animated, Image, Easing,
+  Text, StyleSheet, Animated, Image, Easing, View,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -22,10 +22,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     bottom: 0,
+    left: 0,
+    right: 0,
     alignItems: 'center',
     backgroundColor: Colors.whiteColor,
   },
   healthbarContainer: {
+    position: 'relative',
+    padding: 0,
     alignItems: 'center',
     marginBottom: 10,
     overflow: 'hidden',
@@ -78,13 +82,17 @@ function ReportItem({
       <Text style={styles.headerStyle}>{name}</Text>
       <SubCardView style={[styles.healthbarContainer, { backgroundColor: Colors.darkBlueColor }]}>
         <Animated.View style={getAnimatedStyle(myWidth, Colors.blueColor)} />
-        <Image source={userAvatar} style={styles.avatarStyle} />
-        <Text style={styles.textStyle}>{`My troop left ${100 - myLoss}%`}</Text>
+        <View style={{ padding: 10, flexDirection: 'row', alignItems: 'center' }}>
+          <Image source={userAvatar} style={styles.avatarStyle} />
+          <Text style={styles.textStyle}>{`My troop left ${100 - myLoss}%`}</Text>
+        </View>
       </SubCardView>
       <SubCardView style={[styles.healthbarContainer, { backgroundColor: Colors.darkRedColor }]}>
         <Animated.View style={getAnimatedStyle(enemyWidth, Colors.redColor)} />
-        <Image source={userAvatar} style={styles.avatarStyle} />
-        <Text style={styles.textStyle}>{`Enemy troop left ${100 - enemyLoss}%`}</Text>
+        <View style={{ padding: 10, flexDirection: 'row', alignItems: 'center' }}>
+          <Image source={userAvatar} style={styles.avatarStyle} />
+          <Text style={styles.textStyle}>{`Enemy troop left ${100 - enemyLoss}%`}</Text>
+        </View>
       </SubCardView>
     </CardView>
   );
