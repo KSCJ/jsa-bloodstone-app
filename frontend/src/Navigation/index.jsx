@@ -25,7 +25,7 @@ const bottomNavigationOptions = {
   initialRouteName: 'Playground',
   order: ['MyKingdom', 'Playground', 'Settings'],
   barStyle: {
-    backgroundColor: Colors.tabBar,
+    backgroundColor: Colors.blueColor,
   },
   resetOnBlur: false,
   shifting: true,
