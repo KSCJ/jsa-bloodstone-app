@@ -86,7 +86,7 @@ function Settings() {
       if (username.length < 3) {
         showAlert('Please reenter a valid username');
       }
-      settings.username = username;
+      settings.username = username.toLowerCase();
     }
     if (kingdomName) {
       settings.kingdomName = kingdomName;
