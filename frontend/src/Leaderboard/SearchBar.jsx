@@ -9,11 +9,13 @@ import colors from '../common/colors';
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 24,
     marginBottom: 10,
+    elevation: 0,
   },
   inputStyle: {
     flex: 1,

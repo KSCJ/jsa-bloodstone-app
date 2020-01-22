@@ -35,7 +35,7 @@ function Troops() {
   } = infoOfTroops;
 
   return (
-    <CardView style={{ flexDirection: 'column', marginBottom: 0 }}>
+    <View style={{ flexDirection: 'column', marginBottom: 0 }}>
       <ScrollView>
         <TroopInformation
           attack={attack}
@@ -52,7 +52,7 @@ function Troops() {
           ))}
         </View>
       </ScrollView>
-    </CardView>
+    </View>
   );
 }
 

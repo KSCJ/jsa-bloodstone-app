@@ -14,15 +14,13 @@ const MY_RANKING = 'MyRanking';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 1,
     flex: 1,
-    padding: 0,
   },
   menuContainer: {
     backgroundColor: '#ffffffcc',
     flexDirection: 'row',
-    borderTopLeftRadius: 6,
-    borderTopRightRadius: 6,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
   },
   contentContainer: {
     flex: 1,

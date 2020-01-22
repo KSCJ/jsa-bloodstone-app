@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, StyleSheet, Text } from 'react-native';
-import { CardView } from '../common/components';
 import { changeDisplayedComponent } from './actionCreator';
 
 import MenuItem from './MenuItem';
@@ -23,7 +22,8 @@ const styles = StyleSheet.create({
   container: {
     padding: 0,
     height: 150,
-    marginBottom: 0,
+    // marginBottom: 10,
+    // backgroundColor: '#00bcd4',
   },
   headerStyle: {
     flexDirection: 'row',
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 14,
     fontWeight: 'bold',
+    color: '#eee',
   },
   itemContainer: {
     flex: 1,
@@ -52,7 +53,7 @@ function Menu() {
   }
 
   return (
-    <CardView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.headerStyle}>
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <Text style={styles.titleStyle}>My Kingdom</Text>
@@ -70,7 +71,7 @@ function Menu() {
           />
         ))}
       </View>
-    </CardView>
+    </View>
   );
 }
 

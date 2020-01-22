@@ -11,7 +11,7 @@ const FONT_SIZE = 12 * vw;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderRadius: 6,
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -34,7 +34,7 @@ function MenuItem({
 }) {
   const containerColorStyle = {
     backgroundColor: activeComponent === name
-      ? Colors.lightenGrey
+      ? Colors.lightTeal4
       : Colors.transparent,
   };
   const textColorStyle = {

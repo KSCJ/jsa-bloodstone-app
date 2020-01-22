@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  View, ScrollView, StyleSheet, ActivityIndicator,
+  View, ScrollView, StyleSheet, ActivityIndicator, Text,
 } from 'react-native';
 
 import { fetchBuildings, addBuildingSuccess } from './actionCreator';
@@ -11,7 +11,6 @@ import addFarmIcon from '../../assets/buildings/addFarm.png';
 import addMineIcon from '../../assets/buildings/addMine.png';
 
 import Colors from '../common/colors';
-import { CardView } from '../common/components';
 
 import BuildingItem from './buildingItem';
 import AddBuildingItem from './addBuildingItem';
@@ -21,14 +20,21 @@ import ErrorPopup from '../ErrorPopup';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     padding: 0,
     marginBottom: 0,
-    paddingBottom: 52,
+    height: 308,
+    // paddingBottom: 52,
+    borderRadius: 12,
+    backgroundColor: '#ffffffdd',
+    overflow: 'hidden',
   },
   scrollViewContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    // overflow: 'hidden',
+    // borderWidth: 1,
+    paddingTop: 5,
   },
   addBuildingContainer: {
     bottom: 0,
@@ -82,7 +88,7 @@ function Buildings() {
 
   return (
     <View style={{ flex: 1 }}>
-      <CardView style={styles.container}>
+      <View style={styles.container}>
         <ScrollView
           bounces
           style={{ flex: 1 }}
@@ -97,7 +103,7 @@ function Buildings() {
             />
           ))}
         </ScrollView>
-        <View style={styles.addBuildingContainer}>
+        {/* <View style={styles.addBuildingContainer}>
           {ADD_ICON_LIST.map((addBuildingIcon) => (
             <AddBuildingItem
               key={addBuildingIcon.type}
@@ -106,8 +112,8 @@ function Buildings() {
               onPress={() => addNewBuilding(addBuildingIcon.type)}
             />
           ))}
-        </View>
-      </CardView>
+        </View> */}
+      </View>
       {isModalVisible
         ? (
           <OneBuilding

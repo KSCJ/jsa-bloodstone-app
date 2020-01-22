@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 14,
-    color: Colors.textColor,
+    color: '#eee',
     fontWeight: 'bold',
   },
   subText: {

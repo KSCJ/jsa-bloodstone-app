@@ -10,22 +10,26 @@ import getIconImage from './assets';
 
 const styles = StyleSheet.create({
   itemContainer: {
-    margin: 5,
-    padding: 24,
-    paddingBottom: 0,
-    backgroundColor: '#ffffff66',
-    borderRadius: 10,
+    // margin: 5,
+    // padding: 10,
+    paddingBottom: 5,
+    // backgroundColor: '#ffffff66',
+    // borderRadius: 10,
+
+    // borderWidth: StyleSheet.hairlineWidth,
+    // borderColor: 'rgba(0,0,0,.12)',
     alignItems: 'center',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: 'rgba(0,0,0,.12)',
-    flexBasis: 120,
+    justifyContent: 'center',
+    // flexBasis: 120,
   },
   imageContainer: {
     position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   iconStyle: {
-    width: 64,
-    height: 64,
+    width: 96,
+    height: 96,
   },
   levelContainer: {
     paddingVertical: 2,
@@ -44,7 +48,7 @@ const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: Colors.blackColor,
+    color: Colors.whiteColor,
   },
   textContainer: {
     paddingVertical: 7,
@@ -60,17 +64,17 @@ function BuildingItem({
     <TouchableHighlight
       underlayColor="transparent"
       onPress={onPress}
-      style={{ flexBasis: '33%' }}
+      style={{ flexBasis: '25%' }}
     >
       <View style={styles.itemContainer}>
         <View style={styles.imageContainer}>
-          <Image style={styles.iconStyle} source={getIconImage(type)} />
-          <View style={styles.textContainer}>
+          <Image resizeMode="cover" style={styles.iconStyle} source={getIconImage(type)} />
+          {/* <View style={styles.textContainer}>
             <Text style={styles.titleStyle}>{type}</Text>
-          </View>
-          <View style={styles.levelContainer}>
+          </View> */}
+          {/* <View style={styles.levelContainer}>
             <Text style={styles.levelStyle}>{`Lv. ${level}`}</Text>
-          </View>
+          </View> */}
         </View>
       </View>
     </TouchableHighlight>
