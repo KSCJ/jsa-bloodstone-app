@@ -54,7 +54,7 @@ function Menu() {
   return (
     <CardView style={styles.container}>
       <View style={styles.headerStyle}>
-        <View style={{ paddingVertical: 7 }}>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
           <Text style={styles.titleStyle}>My Kingdom</Text>
         </View>
         <Resources />
